@@ -13,22 +13,19 @@ npm i spett
 ```js
 const request = require('spett')
 
-// The data, the status code and the response object
-const { data, code, res } = await request({ path: '/hello'})
-
-
-
 // Default options
 const options = {
   host: 'localhost',
   port: '9090',
   path: '/',
   method: 'POST',
-  // Example for headers:
-  // headers: {
-  //   'accept': 'application/json'
-  // }
+  headers: {
+    'content-type': 'application/json'
+  }
 }
+
+// The data, the status code and the response object
+const { data, code, res } = await request({ path: '/hello'}, options)
 ```
 
 ISC Licensed. Enjoy!
