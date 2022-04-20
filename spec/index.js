@@ -22,7 +22,7 @@ async function run() {
     res.setHeader('content-type', 'application/json')
     res.end(JSON.stringify(data))
   })
-  server.listen(9090)
+  server.listen(9080)
 
   console.time('Test run')
   await test('http')

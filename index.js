@@ -19,7 +19,7 @@ module.exports = function(options) {
   }
 
   // Extract params
-  let { params } = options
+  let params = options.params || {}
   delete options.params
   if (typeof params == 'object') {
     params = JSON.stringify(params)
@@ -50,12 +50,8 @@ module.exports = function(options) {
     const req = http.request(options, query)
     req.on('error', reject)
 
-    // Write params
-    if (params) {
-      req.write(params)
-    }
-
-    req.end()
+    // Write params and send
+    req.end(params)
   }
 
   return new Promise(request)
