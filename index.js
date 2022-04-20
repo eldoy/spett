@@ -35,7 +35,7 @@ module.exports = function(options) {
 
       res.on('close', function() {
         const type = res.headers['content-type']
-        if (type.startsWith('application/json')) {
+        if (type && type.startsWith('application/json')) {
           try {
             data = JSON.parse(data)
           } catch(e) {
