@@ -19,12 +19,13 @@ module.exports = function(options) {
   }
 
   // Extract params
-  let params = options.params || {}
+  let params = options.params || ''
   delete options.params
+
   if (typeof params == 'object') {
     params = JSON.stringify(params)
-    options.headers['content-length'] = Buffer.byteLength(params)
   }
+  options.headers['content-length'] = Buffer.byteLength(params)
 
   function request(resolve, reject) {
     function query(res) {
@@ -50,7 +51,6 @@ module.exports = function(options) {
     const req = http.request(options, query)
     req.on('error', reject)
 
-    // Write params and send
     req.end(params)
   }
 
