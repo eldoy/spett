@@ -25,7 +25,7 @@ const options = {
 }
 
 // The data, the status code and the response object
-const { data, code, res } = await request({ path: '/hello'}, options)
+const { data, code, res } = await request({ path: '/hello'})
 ```
 
 ISC Licensed. Enjoy!
